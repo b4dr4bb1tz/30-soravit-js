@@ -9,7 +9,7 @@ document.getElementById("form").addEventListener("submit",(event) => {
 
     const imageUrlEl = document.getElementById("imageUrl").value;
     const productNameEl = document.getElementById("productName").value;
-    const productPriceEl = document.getElementById("productPrice").value;
+    const productPriceEl = parseFloat(document.getElementById("productPrice").value);
 
 
     const newUpload = {
@@ -30,16 +30,23 @@ document.getElementById("form").addEventListener("submit",(event) => {
 
 });
 
-function displayUpload(uploads){
+function displayUpload(upload){
 
     const displaySection = document.getElementById("displaySection");
     const card = document.createElement("div");
     card.className = "bg-white p-4 rounded-lg shadow-lg";
 
-    card.innerHTML = `<img src="${uploads.imageUrlEl} alt="${uploads.productNameEl}" class="w-full aspect-[4/3] rounded-md mb-4 object-cover"/>
-    <p class="text-gray-700 font-semibold text-2xl text-balance overflow-hidden my-4 p-4">${uploads.productNameEl}</p>
-    <label class="inline-flex items-center mt-2 text-2xl px-4">
-        <span class="ml-2 text-gray-700 font-semibold">Check</span>
-        </label>`;
+    card.innerHTML = `<div class="flex ">
+    <label class="inline-flex items-center mt-2 text-2xl px-2 aligh-center">
+    <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" ${upload.checkItems ? 'checked' : ''}>
+    </label>
+        <img src="${upload.url}" alt="${upload.name}" class="w-1/5 aspect-[4/3] rounded-md mb-4 object-cover"/>
+        <div class="flex-col">
+        <p class="text-gray-700 font-semibold text-l text-balance overflow-hidden my-2 p-2">Name: ${upload.name}</p>
+        <p class="text-gray-700 font-semibold text-l text-balance overflow-hidden my-2 p-2">Price: $${upload.price}</p>
+        </div>
+        </div>
+        <button id="addToCart" type="submit">Add to Cart</button>
+        `;
         displaySection.appendChild(card);
 }
