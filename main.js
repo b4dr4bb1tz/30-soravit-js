@@ -46,7 +46,6 @@ function displayUpload(upload){
         <p class="text-gray-700 font-semibold text-l text-balance overflow-hidden my-2 p-2">Price: $${upload.price}</p>
         </div>
         </div>
-        <button id="addToCart" type="submit">Add to Cart</button>
         `;
         displaySection.appendChild(card);
 }
